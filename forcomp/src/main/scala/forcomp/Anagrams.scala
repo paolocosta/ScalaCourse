@@ -185,6 +185,8 @@ object Anagrams {
 
 
     }
-    partial(sentenceOccurrences(sentence), List(), List())
+    def listOfOccurrences = partial(sentenceOccurrences(sentence), List(), List())
+    //listOfOccurrences.map(x=> cartesianProduct(x.map(y=> dictionaryByOccurrences(y))))
+
   }
 }
