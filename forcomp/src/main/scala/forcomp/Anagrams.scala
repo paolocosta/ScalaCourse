@@ -178,15 +178,13 @@ object Anagrams {
         case h =>
            combinations(occurrenceList)
              .filter(x=> dictionaryByOccurrences.contains(x))
-             //.map(x=> partial(subtract(occurrenceList, x), x))
              .foldLeft(sentencesSoFar)((acc,b:Occurrences) => acc ::: partial(subtract(occurrenceList, b), b :: sentenceSoFar, sentencesSoFar))
-             //.map(x=> partial(subtract(occurrenceList, x), x :: sentenceSoFar ))
       }
 
 
     }
     def listOfOccurrences = partial(sentenceOccurrences(sentence), List(), List())
-    //listOfOccurrences.map(x=> cartesianProduct(x.map(y=> dictionaryByOccurrences(y))))
+    listOfOccurrences.map(x=> cartesianProduct(x.map(y=> dictionaryByOccurrences(y)))).flatMap(x => x.toList)
 
   }
 }
